@@ -3,16 +3,16 @@
 {% block content_title %}
 {% endblock %}
 {% for article in articles_page.object_list %}
-<article class="blog-entry">
-    <h2 class="entry-title">
+<article class="post">
+    <h2 class="post-title">
         <a href="{{ SITEURL }}/{{ article.url }}" rel="bookmark">
             {{ article.title }}
         </a>
     </h2>
-    <div class="entry-pubdate">
+    <div class="post-pubdate">
         {{ article.locale_date }}
     </div>
-    <div class="entry-summary"> {{ article.summary }} </div>
+    <div class="post-summary"> {{ article.summary }} </div>
 </article>
 {% endfor %}
 {% include 'pagination.html' %}
