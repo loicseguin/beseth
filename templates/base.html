@@ -29,30 +29,38 @@
         <link href="{{ FEED_DOMAIN }}/{{ TAG_FEED_RSS|format(tag.slug) }}" type="application/rss+xml" rel="alternate" title="{{ SITENAME }} Tags RSS Feed" />
         {% endif %}
         {% endblock head %}
+        <link href='http://fonts.googleapis.com/css?family=Alegreya|Alegreya+SC' rel='stylesheet' type='text/css'>
         <link rel="stylesheet" href="{{ SITEURL}}/theme/css/beseth.css" type="text/css" />
     </head>
 
     <body>
         <header id="banner">
             <div class="container">
-                <h1 id="site-title"><a href="{{ SITEURL }}/">{{ SITENAME }} <strong>{{ SITESUBTITLE }}</strong></a></h1>
+                <h1 class="site-title"><a class="site-title" href="{{ SITEURL }}/">{{ SITENAME }} <strong>{{ SITESUBTITLE }}</strong></a></h1>
 
-                <nav><ul class="nav-list">
+                <nav><ul class="nav-list plain">
                     {% for title, link in MENUITEMS %}
-                    <li class="nav-list-item"><a href="{{ link }}">{{ title }}</a></li>
+                    <li class="nav-list-item">
+                        <a class="nav-list-link" href="{{ link }}">{{ title }}</a>
+                    </li>
                     {% endfor %}
                     {% if DISPLAY_PAGES_ON_MENU %}
                     {% for p in PAGES %}
-                    <li class="nav-list-item{% if p == page %} active{% endif %}"><a href="{{ SITEURL }}/{{ p.url }}">{{ p.title }}</a></li>
+                    <li class="nav-list-item{% if p == page %} active{% endif %}">
+                        <a class="nav-list-link" href="{{ SITEURL }}/{{ p.url }}">{{ p.title }}</a>
+                    </li>
                     {% endfor %}
                     {% else %}
                     {% if DISPLAY_CATEGORIES_ON_MENU %}
                     {% for cat, null in categories %}
-                    <li class="nav-list-item{% if cat == category %} active{% endif %}"><a href="{{ SITEURL }}/{{ cat.url }}">{{ cat }}</a></li>
+                    <li class="nav-list-item{% if cat == category %} active{% endif %}">
+                        <a class="nav-list-link" href="{{ SITEURL }}/{{ cat.url }}">{{ cat }}</a>
+                    </li>
                     {% endfor %}
                     {% endif %}
                     {% endif %}
                 </ul></nav>
+                <hr class="headersep" />
             </div>
         </header>
 
@@ -62,6 +70,15 @@
         </section>
 
         <footer id="mainfooter">
+            <div class="container">
+                {% if SOCIAL %}
+                <ul class="social-list plain">
+                    {% for name, link in SOCIAL %}
+                    <li class="social-item"><a class="social-link" href="{{ link }}"></a></li>
+                    {% endfor %}
+                </ul>
+                {% endif %}
+            </div>
         </footer>
 
         {% if GOOGLE_ANALYTICS %}
@@ -76,5 +93,8 @@
             })();
         </script>
         {% endif %}
+        <script type="text/javascript"
+            src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+        </script>
     </body>
 </html>
