@@ -147,7 +147,7 @@ pre, code {
     font-size: 0.8em;
     padding: 2px 4px;
     border-radius: 3px;
-    overflow: scroll;
+    overflow: auto;
 }
 
 blockquote {
