@@ -157,6 +157,10 @@ blockquote {
     padding: 0 0 0 15px;
 }
 
+.footnote {
+    font-size: 0.8em;
+}
+
 img {
     display: block;
     margin: 0 auto;
